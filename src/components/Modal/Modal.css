@@ -14,11 +14,49 @@
 }
 
 .ModalOpen {
-    opacity: 1;
-    transform: translateY(0);
+    animation: openModal .3s ease-in-out forwards;
 }
 
 .ModalClose {
-    opacity: 0;
-    transform: translateY(-100%);
+    animation: closeModal .3s ease-in-out forwards; 
+}
+
+@keyframes openModal {
+    0% {
+        opacity: 0;
+        transform: translateY(-100%);
+    }
+
+    50% {
+        opacity: 1;
+        transform: translateY(20%);
+        transform: scale(1.1)
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+        transform: scale(1)
+
+    }
+}
+
+@keyframes closeModal {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    50% {
+        opacity: 0.5;
+        transform: scale(0.8);
+        transform: translateY(-60%);
+        
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(-100%);
+        transform: scale(0)
+    }
 }
