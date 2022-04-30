@@ -42,9 +42,16 @@ class App extends Component {
               opacity: state === 'exiting' ? 0 : 1
             }}></div>)}
         </Transition>
-        
-        {/* this behavior has limitations as it animatie in IN but not in OUT ,react dosent wait for animaton */}
-        {this.state.modalIsOpen && <Modal show={this.state.modalIsOpen} closed={this.closeModalHandler} />}
+
+        <Transition
+          in={this.state.modalIsOpen}
+          timeout={300}
+          mountOnEnter
+          unmountOnExit>
+          {state => (
+            <Modal show={state} closed={this.closeModalHandler} />
+          )}
+        </Transition>
         {this.state.modalIsOpen && <Backdrop show={this.state.modalIsOpen} />}
 
         <button
